@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "ortaktesbihapp"
-  }
+  },
+  "targets": {
+    "ortaktesbihapp": {
+      "hosting": {
+        "ortaktesbih": [
+          "ortaktesbih"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
