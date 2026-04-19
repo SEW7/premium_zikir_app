@@ -304,8 +304,9 @@ class _ZikirmatikSayfasiState extends State<ZikirmatikSayfasi> {
         actions: [
           IconButton(
             icon: const Icon(Icons.share_rounded, color: Color(0xFF2E7D32)),
-            onPressed: () => Share.share("🤲 Duaya Ortak Olun\n✨ Niyet: ${widget.data['niyet'] ?? 'Genel'}\n📌 Zikir: ${widget.data['baslik']}\n🔗 https://ortaktesbih.web.app/zikir/${widget.docId}"),
-          ),
+            onPressed: () => Share.share(
+  "🤲 *Ortak Dua*\n\n✨ *Niyet:* ${widget.data['niyet'] ?? 'Genel'}\n\n🔗 Duaya katılmak için tıklayın:\nhttps://ortaktesbih.web.app/zikir/${widget.docId}"
+),
           if (widget.data['kurucuId'] == "sarah_admin")
             IconButton(icon: const Icon(Icons.delete_outline_rounded, color: Colors.red), onPressed: () {
               FirebaseFirestore.instance.collection('zikirler').doc(widget.docId).delete();
