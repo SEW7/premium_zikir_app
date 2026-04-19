@@ -6,7 +6,8 @@
     "ortaktesbihapp": {
       "hosting": {
         "ortaktesbih": [
-          "ortaktesbih"
+          "ortaktesbih",
+          "ortaktesbihapp"
         ]
       }
     }
