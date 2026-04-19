@@ -23,12 +23,30 @@ class PremiumZikirApp extends StatelessWidget {
         primaryColor: const Color(0xFF2E7D32),
         useMaterial3: true,
       ),
-      home: const AnaSayfaPremium(),
+      // Aşağıdaki satırları ekleyerek linkteki ID'yi yakalıyoruz
+      onGenerateRoute: (settings) {
+        if (settings.name != null && settings.name!.startsWith('/zikir/')) {
+          final docId = settings.name!.split('/').last;
+          return MaterialPageRoute(
+            builder: (context) => FutureBuilder<DocumentSnapshot>(
+              future: FirebaseFirestore.instance.collection('zikirler').doc(docId).get(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Scaffold(body: Center(child: CircularProgressIndicator()));
+                }
+                if (snapshot.hasData && snapshot.data!.exists) {
+                  return ZikirmatikSayfasi(docId: docId, data: snapshot.data!.data() as Map<String, dynamic>);
+                }
+                return const AnaSayfaPremium();
+              },
+            ),
+          );
+        }
+        return MaterialPageRoute(builder: (context) => const AnaSayfaPremium());
+      },
     );
   }
 }
-
-// --- CEMİLE: METİNLER %100 ORİJİNAL ---
 final List<Map<String, dynamic>> hazirZikirler = const [
   {
     'baslik': 'Salavat-ı Şerife',
@@ -308,7 +326,7 @@ class _ZikirmatikSayfasiState extends State<ZikirmatikSayfasi> {
               "🤲 *Ortak Dua*\n\n"
               "✨ *Niyet:* ${widget.data['niyet'] ?? 'Genel'}\n\n"
               "🔗 Duaya katılmak için tıklayın:\n"
-              "https://ortaktesbih.web.app/zikir/${widget.docId}"
+              "https://ortaktesbihapp.web.app/zikir/${widget.docId}"
             ),
           ), // <-- Bu virgül eksikti, hata bundan kaynaklanıyordu!
           if (widget.data['kurucuId'] == "sarah_admin")

@@ -6,7 +6,9 @@
     "ortaktesbihapp": {
       "hosting": {
         "ortaktesbih": [
-          "ortaktesbih",
+          "ortaktesbih"
+        ],
+        "asil-site": [
           "ortaktesbihapp"
         ]
       }

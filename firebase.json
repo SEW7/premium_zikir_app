@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "ortaktesbihapp",
     "public": "build/web",
     "ignore": [
       "firebase.json",
@@ -7,6 +8,10 @@
       "**/node_modules/**"
     ],
     "rewrites": [
+      {
+        "source": "/zikir/**",
+        "destination": "/index.html"
+      },
       {
         "source": "**",
         "destination": "/index.html"
