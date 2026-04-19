@@ -305,7 +305,11 @@ class _ZikirmatikSayfasiState extends State<ZikirmatikSayfasi> {
           IconButton(
             icon: const Icon(Icons.share_rounded, color: Color(0xFF2E7D32)),
             onPressed: () => Share.share(
-  "🤲 *Ortak Dua*\n\n✨ *Niyet:* ${widget.data['niyet'] ?? 'Genel'}\n\n🔗 Duaya katılmak için tıklayın:\nhttps://ortaktesbih.web.app/zikir/${widget.docId}"
+  "🤲 *Ortak Dua*\n\n"
+  "✨ *Niyet:* ${widget.data['niyet'] ?? 'Genel'}\n\n"
+  "🔗 Ortak duaya buyurun:\n"
+  "https://ortaktesbih.web.app/zikir/${widget.docId}"
+),
 ),
           if (widget.data['kurucuId'] == "sarah_admin")
             IconButton(icon: const Icon(Icons.delete_outline_rounded, color: Colors.red), onPressed: () {
